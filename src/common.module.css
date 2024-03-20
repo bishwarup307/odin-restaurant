@@ -1,0 +1,120 @@
+:root {
+    --clr-primary: hsl(342, 90%, 49%);
+    --clr-dark: hsl(152, 100%, 3%);
+    --clr-secondary: hsl(15, 28%, 89%);
+    --clr-light: hsl(0, 0%, 95%);
+    /* --clr-primary: hsl(151, 71%, 35%); */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: "Chivo", sans-serif;
+}
+
+.hero {
+    height: 70vh;
+    background: image-set(
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero.png")
+                1x,
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1901/hero.png")
+                2x,
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-3001/hero.png")
+                3x
+        ),
+        linear-gradient(90deg, hsl(339, 100%, 3%) 0%, hsl(0, 1%, 16%) 100%);
+    /* linear-gradient(90deg, hsl(342, 90%, 19%) 0%, hsl(342, 90%, 49%) 100%); */
+    background-position: left center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-inline: 8rem;
+}
+
+.hero_text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 50%;
+}
+
+.logo {
+    max-width: 400px;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 200;
+    color: var(--clr-secondary);
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    text-align: center;
+    font-weight: 500;
+}
+
+.btn-primary {
+    composes: btn;
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    border: 1px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.btn-primary::after {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    content: "";
+    background: white;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: transform ease 300ms;
+    z-index: -1;
+}
+
+.btn-primary:hover::after {
+    transform: skewX(-45deg) scale(1, 1);
+}
+
+.btn-regular {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5em 1em;
+}
+
+.btn-large {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.6em 1.25em;
+}
+
+.btn-xl {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.6em 3em;
+}
+
+/* .hero_text:last-child {
+    margin-top: 8rem;
+} */
