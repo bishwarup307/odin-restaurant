@@ -11,7 +11,7 @@ module.exports = {
         clean: true,
         assetModuleFilename: "[name][ext]",
     },
-    modules: {
+    module: {
         rules: [
             {
                 test: /\.(jpg|jpeg|png|svg|gif)$/i,
