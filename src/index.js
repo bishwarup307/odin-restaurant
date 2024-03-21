@@ -1,5 +1,6 @@
 import style from "./common.module.css";
 import logoPng from "./assets/logo-color.png";
+import Menu from "./components/menu/menu.js";
 
 function Hero() {
     const hero = document.createElement("div");
@@ -22,7 +23,7 @@ function Hero() {
 
     const orderNowBtn = document.createElement("button");
     orderNowBtn.textContent = "Order Now";
-    const classNames = style["btn-primary"].split(" ");
+    const classNames = style.btnPrimary.split(" ");
     classNames.forEach((className) => orderNowBtn.classList.add(className));
     // orderNowBtn.classList.add(style["btn-primary"]);
     orderNowBtn.classList.add(style["btn-xl"]);
@@ -30,8 +31,8 @@ function Hero() {
 
     hero.appendChild(heroText);
 
-    document.body.appendChild(hero);
+    return hero;
 }
 
-console.log(style);
-Hero();
+document.body.appendChild(Hero());
+document.body.appendChild(Menu());

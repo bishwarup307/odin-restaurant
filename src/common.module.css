@@ -24,7 +24,7 @@
     background: linear-gradient(
             180deg,
             rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.1) 100%
+            rgba(0, 0, 0, 0.1) 40%
         ),
         image-set(
             url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero2.jpg")
@@ -128,12 +128,12 @@
 
 @media only screen and (min-width: 768px) {
     .hero {
-        height: 70vh;
+        height: 60vh;
         justify-content: start;
         background: linear-gradient(
                 90deg,
                 rgba(0, 0, 0, 0.8) 0%,
-                rgba(0, 0, 0, 0.1) 100%
+                rgba(0, 0, 0, 0.1) 60%
             ),
             image-set(
                 url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero2.jpg")
@@ -145,7 +145,7 @@
             );
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: left center;
+        background-position: left 70%;
         padding-inline: 8rem;
     }
 

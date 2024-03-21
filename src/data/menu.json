@@ -1,5 +1,6 @@
 [
     {
+        "id": "item-1",
         "name": "Crispy Chilli Babycorn",
         "description": "Indulge in the tantalizing flavors of our Crispy Chilli Babycorn, a delectable vegetarian delight that promises to ignite your taste buds. Each morsel of babycorn is coated in a light, crispy batter and fried to golden perfection, then tossed in a spicy and sweet chilli sauce. This dish offers a satisfying crunch, paired with a burst of bold flavors, making it a perfect starter or side. Rich in fiber and antioxidants, it's not only a treat for the palate but also a healthier choice for those seeking a nutritious yet indulgent option.",
         "category": "non-veg",
@@ -7,9 +8,11 @@
         "rating": 4.2,
         "reviews": 190,
         "discount": 10,
+        "bestSeller": true,
         "url": "babycorn-chilli.jpg"
     },
     {
+        "id": "item-2",
         "name": "Grilled Chicken Breast",
         "category": "non-veg",
         "description": "Savor the simplicity and elegance of our Grilled Chicken Breast, a dish designed to delight the health-conscious gourmet. Perfectly grilled to succulent perfection, our chicken breast is marinated in a blend of herbs and spices that enhance its natural flavors without overpowering them. This lean protein choice is served with a side of steamed vegetables and a light, herby dressing, making it a balanced and nutritious meal. Ideal for those seeking a high-protein, low-fat option, it's a testament to the belief that healthy eating can be both satisfying and delicious.",
@@ -17,9 +20,11 @@
         "rating": 4.7,
         "reviews": 652,
         "discount": 7,
+        "bestSeller": true,
         "url": "chicken-breast.jpg"
     },
     {
+        "id": "item-3",
         "name": "Creamy Vegetable Soup",
         "category": "veg",
         "description": "Indulge in the comforting flavors of our Creamy Vegetable Soup, a rich and velvety delight that promises to warm your soul. A medley of fresh, seasonal vegetables is simmered to perfection in a creamy, flavorful broth, creating a wholesome and nourishing dish. This soup is not only a treat for the palate but also a healthier choice for those seeking a nutritious yet indulgent option. Rich in fiber and antioxidants, it's a perfect way to start your meal or enjoy as a light yet satisfying meal on its own.",
@@ -29,6 +34,7 @@
         "url": "cream-soup.jpg"
     },
     {
+        "id": "item-4",
         "name": "Spinach Noodle Soup",
         "category": "veg",
         "description": "Savor the earthy and vibrant flavors of our Spinach Noodle Soup, a dish designed to delight the health-conscious gourmet. Perfectly cooked noodles are simmered in a rich, flavorful broth infused with the goodness of fresh spinach, creating a wholesome and nourishing dish. This soup is not only a treat for the palate but also a healthier choice for those seeking a nutritious yet indulgent option. Rich in fiber and antioxidants, it's a perfect way to start your meal or enjoy as a light yet satisfying meal on its own.",
@@ -38,6 +44,7 @@
         "url": "noodle-soup.jpg"
     },
     {
+        "id": "item-5",
         "name": "Chicken Hakka Noodles",
         "category": "non-veg",
         "description": "Experience the vibrant fusion of flavors with our Chicken Hakka Noodles, a classic Indo-Chinese dish that's both comforting and exhilarating. Tender strips of chicken are stir-fried with a colorful array of vegetables and then tossed with perfectly cooked noodles, all seasoned with a blend of traditional spices and sauces that bring out the umami richness. This dish is not only a feast for the eyes but also packed with protein and nutrients, offering a wholesome yet tantalizing dining experience. Perfect for those craving a spicy, savory meal with an Asian twist, our Chicken Hakka Noodles are sure to satisfy your appetite and spice up your day.",
@@ -48,6 +55,7 @@
         "url": "spaghetti.jpg"
     },
     {
+        "id": "item-6",
         "name": "Shrimp Creamy Soup",
         "category": "non-veg",
         "description": "Dive into the soothing warmth of our Shrimp Creamy Soup, a luxurious blend of succulent shrimp and velvety cream that will comfort your soul. This rich soup is delicately seasoned with herbs and spices, enhancing the natural sweetness of the shrimp while the creamy base provides a smooth and indulgent texture. Packed with protein and essential nutrients, it's a hearty choice that doesn't compromise on flavor or health. Ideal for a cozy night in or as a refined starter to a gourmet meal, our Shrimp Creamy Soup is a harmonious symphony of taste and nourishment.",
@@ -55,9 +63,11 @@
         "rating": 4.9,
         "reviews": 126,
         "discount": 5,
+        "bestSeller": true,
         "url": "shrimp-soup.jpg"
     },
     {
+        "id": "item-7",
         "name": "Steamed Chicken Momos",
         "category": "non-veg",
         "description": "Delight in the delicate flavors of our Steamed Chicken Dumplings, a culinary masterpiece that combines tender, minced chicken with a blend of aromatic herbs and spices, all encased in a thin, soft dough wrapper. These dumplings are steamed to perfection, ensuring a juicy and flavorful filling with a light, pillowy texture on the outside. Served with a side of tangy dipping sauce, they are a harmonious balance of protein, flavor, and texture. Perfect for those seeking a light yet satisfying meal or appetizer, our Steamed Chicken Dumplings are a testament to the art of simple, yet delicious cooking.",
@@ -68,6 +78,7 @@
         "url": "dumplings.jpg"
     },
     {
+        "id": "item-8",
         "name": "Veg Tofu Noodles",
         "category": "veg",
         "description": "Embark on a delightful journey with our Veg Noodles with Tofu, a vibrant and nutritious dish that combines the firm, protein-rich tofu with a medley of fresh vegetables, all stir-fried and intertwined with hearty noodles. Seasoned with a blend of savory sauces and spices, this dish is a celebration of texture and flavor, offering a satisfying crunch with every bite. The tofu not only adds a delicious depth to the meal but also makes it a fantastic source of plant-based protein, ideal for vegetarians and health-conscious diners alike. Enjoy a bowl of our Veg Noodles with Tofu, where health meets taste in a symphony of delightful flavors.",
@@ -77,6 +88,7 @@
         "url": "veg-spaghetti.jpg"
     },
     {
+        "id": "item-9",
         "name": "Vegetable Salad",
         "category": "veg",
         "description": "Feast on our refreshing Veg Salad, a garden-fresh ensemble of crisp lettuce, juicy cherry tomatoes, and sweet roasted onions, all sprinkled with fragrant herbs. This salad is a symphony of textures and flavors, from the crunch of the lettuce to the burst of sweetness from the tomatoes and the caramelized depth of the roasted onions. Lightly dressed with a zesty vinaigrette, it’s a wholesome, nutrient-packed dish that's both invigorating and satisfying. Perfect for those seeking a light yet flavorful meal, our Veg Salad is a testament to the beauty of simplicity in showcasing natural flavors and freshness.",
@@ -87,6 +99,7 @@
         "url": "veg-salad.jpg"
     },
     {
+        "id": "item-10",
         "name": "Chicken Chilli Dry",
         "category": "non-veg",
         "description": "Indulge in the fiery delight of our Chicken Chilli Dry, a bold and flavorful dish that masterfully combines tender, succulent pieces of chicken with the spicy kick of chillies. This dish is a perfect harmony of intense flavors, featuring juicy chicken stir-fried with crisp bell peppers and onions, all coated in a savory, chili-infused sauce that packs a punch. High in protein and bursting with bold spices, it's a dish that's sure to ignite your palate and leave you craving more. Ideal for spice lovers and those in pursuit of a thrilling culinary adventure, our Chicken Chilli Dry offers an unforgettable taste experience that's as exciting as it is satisfying.",
@@ -94,9 +107,11 @@
         "rating": 4.8,
         "reviews": 1450,
         "discount": 10,
+        "bestSeller": true,
         "url": "chicken-chilli-dry.jpg"
     },
     {
+        "id": "item-11",
         "name": "Veg Fried Rice",
         "category": "veg",
         "description": "Savor the wholesome goodness of our Veg Fried Rice with Cottage Cheese, a delightful fusion of fluffy, aromatic rice stir-fried with a colorful medley of fresh vegetables and enriched with soft, creamy cubes of cottage cheese. This dish offers a perfect blend of textures and flavors, with the mild, milky taste of the cottage cheese complementing the savory, seasoned vegetables and rice. Packed with essential nutrients and protein, it's a hearty, balanced meal that doesn't compromise on taste or health. Ideal for vegetarians or anyone looking for a comforting yet nutritious dish, our Veg Fried Rice with Cottage Cheese is a satisfying culinary treat.",
@@ -106,6 +121,7 @@
         "url": "fried-rice.jpg"
     },
     {
+        "id": "item-12",
         "name": "Broccoli Mushroom Soup",
         "category": "veg",
         "description": "Warm up with our Broccoli Mushroom Soup, a comforting and nutritious blend of fresh, green broccoli and earthy mushrooms, simmered to perfection in a savory broth. This soup is a hearty embrace of health, combining the powerful antioxidants of broccoli with the rich, umami flavors of mushrooms. Lightly seasoned and creamy in texture, it's a soul-soothing soup that nourishes the body and delights the taste buds. Perfect for those seeking a light yet fulfilling meal, our Broccoli Mushroom Soup is a testament to the simple elegance of combining wholesome ingredients with culinary craftsmanship.",
@@ -113,6 +129,6 @@
         "rating": 4.7,
         "reviews": 736,
         "discount": 8,
-        "url": "broccoli-soup"
+        "url": "broccoli-soup.jpg"
     }
 ]
