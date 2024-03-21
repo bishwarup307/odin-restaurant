@@ -20,42 +20,49 @@
 }
 
 .hero {
-    height: 70vh;
-    background: image-set(
-            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero.png")
-                1x,
-            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1901/hero.png")
-                2x,
-            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-3001/hero.png")
-                3x
+    height: 50vh;
+    background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.1) 100%
         ),
-        linear-gradient(90deg, hsl(339, 100%, 3%) 0%, hsl(0, 1%, 16%) 100%);
+        image-set(
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero2.jpg")
+                1x,
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1400/hero2.jpg")
+                2x,
+            url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-2000/hero2.jpg")
+                3x
+        );
+
     /* linear-gradient(90deg, hsl(342, 90%, 19%) 0%, hsl(342, 90%, 49%) 100%); */
-    background-position: left center;
+    background-position: right center;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    justify-content: start;
-    padding-inline: 8rem;
+    justify-content: center;
+    padding-inline: 3rem;
+}
+
+.logo {
+    width: 200px;
 }
 
 .hero_text {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    max-width: 50%;
-}
-
-.logo {
-    max-width: 400px;
+    align-items: center;
+    /* max-width: 50%; */
 }
 
 .hero-subtitle {
-    font-size: 1.8rem;
+    font-size: clamp(0.9rem, 0.7rem + 3vw, 1.8rem);
     font-weight: 200;
     color: var(--clr-secondary);
     margin-top: 1rem;
     margin-bottom: 4rem;
+    text-align: center;
 }
 
 .btn {
@@ -110,11 +117,54 @@
 }
 
 .btn-xl {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    padding: 0.6em 3em;
+    padding: 0.5em 2em;
 }
 
 /* .hero_text:last-child {
     margin-top: 8rem;
 } */
+
+@media only screen and (min-width: 768px) {
+    .hero {
+        height: 70vh;
+        justify-content: start;
+        background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.1) 100%
+            ),
+            image-set(
+                url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1079/hero2.jpg")
+                    1x,
+                url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-1400/hero2.jpg")
+                    2x,
+                url("https://ik.imagekit.io/bishwarup307/odin-restaurant/tr:h-2000/hero2.jpg")
+                    3x
+            );
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-inline: 8rem;
+    }
+
+    .logo {
+        width: clamp(250px, 250px + 5vw, 500px);
+    }
+
+    .hero_text {
+        align-items: start;
+        max-width: 50%;
+    }
+
+    .hero-subtitle {
+        text-align: start;
+    }
+
+    .btn-xl {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0.6em 3em;
+    }
+}
