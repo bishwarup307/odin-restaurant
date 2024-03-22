@@ -5,9 +5,8 @@
     place-items: center;
     row-gap: 2.5rem;
     column-gap: 1.5rem;
-    max-width: 1200px;
+    width: clamp(400px, 100vw, 1250px);
     padding-inline: 2rem;
-    margin-inline: auto;
     margin-top: 3rem;
 }
 

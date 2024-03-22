@@ -27,7 +27,18 @@
     font-family: "Chivo", sans-serif;
 }
 
+.root {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+
+    /* grid-template-columns: 1fr;
+    gap: 2rem; */
+}
+
 .hero {
+    display: flex;
+    width: 100vw;
     height: 50vh;
     background: linear-gradient(
             180deg,

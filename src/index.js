@@ -1,6 +1,7 @@
 import style from "./common.module.css";
 import logoPng from "./assets/logo-color.png";
 import Menu from "./components/menu/menu.js";
+import Tab from "./components/tab/tab.js";
 
 function Hero() {
     const hero = document.createElement("div");
@@ -34,5 +35,10 @@ function Hero() {
     return hero;
 }
 
-document.body.appendChild(Hero());
-document.body.appendChild(Menu());
+const body = document.querySelector("#root");
+
+body.classList.add(style.root);
+
+body.appendChild(Hero());
+body.appendChild(Tab());
+body.appendChild(Menu());
