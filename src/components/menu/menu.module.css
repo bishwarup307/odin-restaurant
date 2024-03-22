@@ -1,0 +1,99 @@
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    place-items: center;
+    row-gap: 2rem;
+    column-gap: 1rem;
+    max-width: 1800px;
+    margin-inline: auto;
+    margin-top: 3rem;
+}
+
+.top-div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-icon > svg {
+    width: 24px;
+    height: 24px;
+}
+
+.best-seller {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--clr-secondary-500);
+    background: var(--clr-secondary-100);
+    padding: 0.1em 0.2em;
+    border-radius: 0.25rem;
+}
+
+.image-container {
+    position: relative;
+}
+
+.discount-container {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--clr-accent-100);
+    position: absolute;
+    top: -30px;
+    right: 0;
+    padding: 0.1em 0.2em;
+    border-radius: 0.25rem;
+}
+
+.discount-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.discount-icon > svg {
+    fill: var(--clr-accent);
+}
+
+.discount-text {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--clr-accent);
+}
+
+.delete {
+    display: none;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.add-btn {
+    width: auto;
+}
+
+.rating::before {
+    --percent: calc(var(--rating) / 5 * 100%);
+    content: "\f005 \f005 \f005 \f005 \f005";
+    letter-spacing: 3px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1rem;
+    background: linear-gradient(
+        90deg,
+        var(--clr-secondary) var(--percent),
+        var(--clr-gray-300) var(--percent)
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

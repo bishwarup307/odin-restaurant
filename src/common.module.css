@@ -1,9 +1,15 @@
 :root {
-    --clr-primary: hsl(342, 90%, 49%);
+    --clr-primary: hsl(342, 90%, 50%);
+    --clr-primary-100: hsl(342, 90%, 95%);
     --clr-dark: hsl(152, 100%, 3%);
-    --clr-secondary: hsl(15, 28%, 89%);
+
+    --clr-secondary-500: hsl(48, 100%, 40%);
+    --clr-secondary: hsl(48, 100%, 50%);
+    --clr-secondary-100: hsl(38, 69%, 90%);
     --clr-light: hsl(0, 0%, 95%);
-    /* --clr-primary: hsl(151, 71%, 35%); */
+    --clr-accent: hsl(143, 95%, 33%);
+    --clr-accent-100: hsl(143, 95%, 90%);
+    --clr-gray-300: hsl(0, 0%, 70%);
 }
 
 * {
@@ -59,7 +65,7 @@
 .hero-subtitle {
     font-size: clamp(0.9rem, 0.7rem + 3vw, 1.8rem);
     font-weight: 200;
-    color: var(--clr-secondary);
+    color: var(--clr-light);
     margin-top: 1rem;
     margin-bottom: 4rem;
     text-align: center;
@@ -102,6 +108,12 @@
 
 .btn-primary:hover::after {
     transform: skewX(-45deg) scale(1, 1);
+}
+
+.btn-small {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.3em 0.8em;
 }
 
 .btn-regular {
