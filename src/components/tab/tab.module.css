@@ -1,17 +1,18 @@
 .tab {
     margin: 0;
     display: flex;
+    justify-content: space-around;
     /* Works well with 100% width  */
     /* width: 200px; */
-    width: 100%;
+    width: 60vw;
     font-size: 1.5em;
-    padding: 0 2.85em;
+    /* padding: 0 2.85em; */
     border-radius: 10px;
     border: 1px solid #eaeaea;
     box-shadow: 2px 2px 20px rgb(0 0 0 / 10%);
     position: relative;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: var(--clr-light);
 }
 
@@ -33,8 +34,8 @@
 .tab-item::before {
     content: "";
     z-index: -1;
-    width: 4.2em;
-    height: 4.2em;
+    width: min(10vw, 120px);
+    height: min(10vw, 120px);
     border-radius: 50%;
     position: absolute;
     transform: scale(0);
@@ -48,8 +49,8 @@
 }
 
 .icon {
-    width: 60px;
-    height: 60px;
+    width: min(5vw, 60px);
+    height: min(5vw, 60px);
     stroke: var(--clr-dark);
     fill: none;
     stroke-width: 1pt;
@@ -77,9 +78,10 @@
     left: 0;
     top: -55px;
     bottom: -50px;
-    width: 10.9em;
+    width: min(15vw, 10.9em);
     position: absolute;
-    clip-path: circle(75px);
+    clip-path: circle(min(7vw, 75px));
+    /* clip-path: circle(75px); */
     will-change: transform;
     background-color: #f3f3f3;
     transition: transform 500ms;
@@ -92,8 +94,8 @@
     right: 30%;
     background: var(--clr-primary);
     color: white;
-    width: 24px;
-    height: 24px;
+    width: min(10px + 1vw, 24px);
+    height: min(10px + 1vw, 24px);
     display: flex;
     justify-content: center;
     align-items: center;

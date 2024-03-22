@@ -59,6 +59,10 @@ export default function Tab() {
         offsetMenuBorder(activeItem, border);
     });
 
+    window.addEventListener("resize", () => {
+        offsetMenuBorder(activeItem, border);
+    });
+
     return tab;
 }
 
