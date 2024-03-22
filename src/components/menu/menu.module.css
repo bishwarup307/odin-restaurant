@@ -7,7 +7,7 @@
     column-gap: 1.5rem;
     width: clamp(400px, 100vw, 1250px);
     padding-inline: 2rem;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
 }
 
 .item-grid {
