@@ -78,7 +78,7 @@ function Photo({ discount, url }) {
 
     const photo = document.createElement("img");
     photo.classList.add(style.item__photo);
-    photo.src = `${URL}${url}?tr=w-400,h-300`;
+    photo.src = `${URL}${url}?tr=w-600,h-400`;
     imageDiv.appendChild(photo);
 
     imageDiv.appendChild(Discount(discount));
