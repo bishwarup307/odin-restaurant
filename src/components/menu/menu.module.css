@@ -7,7 +7,6 @@
     column-gap: 1.5rem;
     width: clamp(400px, 100vw, 1250px);
     padding-inline: 2rem;
-    /* margin-top: 3rem; */
 }
 
 .item-grid {
@@ -98,6 +97,7 @@
 .price {
     font-size: 1.1rem;
     font-weight: 300;
+    color: var(--clr-gray-700);
 }
 
 .rating {
@@ -126,7 +126,9 @@
     display: flex;
     align-items: center;
     position: relative;
-    background-color: var(--clr-gray-100);
+    background-color: var(--clr-gray-50);
+    color: var(--clr-gray-500);
+    font-weight: 300;
     border: none;
     border-radius: 0.5rem;
     padding-block: 0.1em;
@@ -188,10 +190,14 @@
 .dialog .description {
     font-size: 0.8rem;
     text-align: center;
+    font-weight: 200;
+    color: var(--clr-gray-700);
+    line-height: 1.5em;
 }
 
 .dialog-body .title {
     flex-grow: 0;
+    color: var(--clr-gray-600);
 }
 
 .btn-dialog-close {
