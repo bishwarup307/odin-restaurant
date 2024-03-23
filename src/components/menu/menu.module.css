@@ -121,3 +121,109 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.btn-more-details {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: var(--clr-gray-100);
+    border: none;
+    border-radius: 0.5rem;
+    padding-block: 0.1em;
+    padding-left: 0.5em;
+    padding-right: 1em;
+    margin-top: 0.25rem;
+
+    &::after {
+        position: absolute;
+        content: "\f0d8";
+        display: inline-block;
+        right: 2px;
+        vertical-align: middle;
+        transform: rotate(90deg);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+    }
+}
+
+.dialog {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgb(255 255 255 / 0.9);
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    resize: both;
+    overflow: auto;
+
+    &::backdrop {
+        background: rgb(0 0 0 / 0.5);
+    }
+}
+
+.dialog-container {
+    position: relative;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dialog-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.dialog .image-container {
+    display: flex;
+    align-items: center;
+}
+
+.dialog .item__photo {
+    width: 200px;
+}
+
+.dialog .description {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.dialog-body .title {
+    flex-grow: 0;
+}
+
+.btn-dialog-close {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    background-color: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+    .dialog-container {
+        flex-direction: row;
+    }
+
+    .dialog-body {
+        width: min(calc(300px + 1vw), 500px);
+        align-items: start;
+        justify-content: start;
+    }
+
+    .dialog .item__photo {
+        width: 300px;
+    }
+
+    .dialog .description {
+        text-align: left;
+    }
+
+    .dialog-body .add-btn {
+        margin-top: auto;
+    }
+}

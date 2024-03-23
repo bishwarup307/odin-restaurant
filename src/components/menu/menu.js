@@ -26,6 +26,7 @@ function ItemComponent(item) {
     itemGrid.appendChild(price);
 
     itemGrid.appendChild(Rating(item));
+    itemGrid.appendChild(MoreDetails(item));
     return itemGrid;
 }
 
@@ -70,7 +71,7 @@ function DishVegNonveg({ category, bestSeller }) {
     return topDiv;
 }
 
-function Photo({ discount, url }) {
+function Photo({ discount, url }, addDiscount = true) {
     const URL = "https://ik.imagekit.io/bishwarup307/odin-restaurant/";
 
     const imageDiv = document.createElement("div");
@@ -81,7 +82,7 @@ function Photo({ discount, url }) {
     photo.src = `${URL}${url}?tr=w-600,h-400`;
     imageDiv.appendChild(photo);
 
-    imageDiv.appendChild(Discount(discount));
+    if (addDiscount) imageDiv.appendChild(Discount(discount));
     return imageDiv;
 }
 
@@ -135,4 +136,67 @@ function Title(item) {
     });
 
     return titleDiv;
+}
+
+function MoreDetails(item) {
+    const moreDetails = document.createElement("div");
+    moreDetails.classList.add(style.moreDetails);
+
+    const btn = document.createElement("button");
+    btn.classList.add(style.btnMoreDetails);
+    btn.textContent = "More details";
+    moreDetails.appendChild(btn);
+
+    const dialog = Popup(item);
+
+    moreDetails.appendChild(dialog);
+    btn.addEventListener("click", () => {
+        // dialog.style.display = "flex";
+        dialog.showModal();
+    });
+
+    return moreDetails;
+}
+
+function Popup(item) {
+    const dialog = document.createElement("dialog");
+    dialog.classList.add(style.dialog);
+
+    const dialogContainer = document.createElement("div");
+    dialogContainer.classList.add(style.dialogContainer);
+
+    dialogContainer.appendChild(Photo(item, false));
+
+    const dialogBody = document.createElement("div");
+    dialogBody.classList.add(style.dialogBody);
+
+    const title = document.createElement("p");
+    title.classList.add(style.title);
+    title.textContent = item.name;
+    dialogBody.appendChild(title);
+
+    const details = document.createElement("p");
+    details.classList.add(style.description);
+    details.textContent = item.description;
+    dialogBody.appendChild(details);
+
+    const addBtn = document.createElement("button");
+    const classNames = commonStyles.btnPrimary.split(" ");
+    classNames.forEach((className) => addBtn.classList.add(className));
+    addBtn.classList.add(commonStyles.btnSmall);
+    addBtn.classList.add(style.addBtn);
+    addBtn.id = item.id;
+    addBtn.textContent = "Add to cart";
+    dialogBody.appendChild(addBtn);
+
+    dialogContainer.appendChild(dialogBody);
+
+    const clsButton = document.createElement("button");
+    clsButton.classList.add(style.btnDialogClose);
+    clsButton.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>`;
+    dialogContainer.appendChild(clsButton);
+
+    dialog.appendChild(dialogContainer);
+
+    return dialog;
 }

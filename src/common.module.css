@@ -9,6 +9,8 @@
     --clr-light: hsl(0, 0%, 95%);
     --clr-accent: hsl(143, 95%, 33%);
     --clr-accent-100: hsl(143, 95%, 90%);
+    --clr-gray-50: hsl(0, 0%, 95%);
+    --clr-gray-100: hsl(0, 0%, 90%);
     --clr-gray-300: hsl(0, 0%, 70%);
     --clr-gray-400: hsl(0, 0%, 50%);
     --clr-gray-600: hsl(0, 0%, 30%);
@@ -25,6 +27,10 @@
 *::after {
     box-sizing: border-box;
     font-family: "Chivo", sans-serif;
+}
+
+button {
+    cursor: pointer;
 }
 
 .root {
