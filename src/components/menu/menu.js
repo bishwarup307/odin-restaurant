@@ -1,6 +1,7 @@
 import menuItems from "../../data/menu.json";
 import style from "./menu.module.css";
 import commonStyles from "../../common.module.css";
+import Cart from "../backend.js";
 
 export default function Menu() {
     // console.log(menuItems);
@@ -132,7 +133,7 @@ function Title(item) {
     titleDiv.appendChild(addBtn);
 
     addBtn.addEventListener("click", () => {
-        console.log(`${item.name} added to cart.`);
+        Cart.addToCart(item);
     });
 
     return titleDiv;
@@ -188,6 +189,10 @@ function Popup(item) {
     addBtn.id = item.id;
     addBtn.textContent = "Add to cart";
     dialogBody.appendChild(addBtn);
+
+    addBtn.addEventListener("click", () => {
+        Cart.addToCart(item);
+    });
 
     dialogContainer.appendChild(dialogBody);
 
