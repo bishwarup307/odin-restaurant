@@ -15,7 +15,6 @@ export default function Tab() {
     function offsetMenuBorder(element, menuBorder) {
         // console.log(element);
         const offsetActiveItem = element.getBoundingClientRect();
-        console.log(offsetActiveItem);
         const left =
             Math.floor(
                 offsetActiveItem.left -

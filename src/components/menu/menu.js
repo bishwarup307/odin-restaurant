@@ -20,7 +20,7 @@ function ItemComponent(item) {
     itemGrid.appendChild(DishVegNonveg(item));
     itemGrid.appendChild(Photo(item));
 
-    const { titleDiv, checkItemInCart } = Title(item);
+    const { titleDiv, btnClickEventHandler } = Title(item);
     itemGrid.appendChild(titleDiv);
 
     const price = document.createElement("p");
@@ -29,7 +29,7 @@ function ItemComponent(item) {
     itemGrid.appendChild(price);
 
     itemGrid.appendChild(Rating(item));
-    itemGrid.appendChild(MoreDetails(item, checkItemInCart));
+    itemGrid.appendChild(MoreDetails(item, btnClickEventHandler));
     return itemGrid;
 }
 
@@ -74,7 +74,7 @@ function DishVegNonveg({ category, bestSeller }) {
     return topDiv;
 }
 
-function Photo({ discount, url }, addDiscount = true) {
+export function Photo({ discount, url }, addDiscount = true) {
     const URL = "https://ik.imagekit.io/bishwarup307/odin-restaurant/";
 
     const imageDiv = document.createElement("div");
@@ -125,10 +125,47 @@ function Title(item) {
     title.textContent = item.name;
     titleDiv.appendChild(title);
 
-    const { buttonContainer, checkItemInCart } = AddButton(item);
+    const { buttonContainer, btnClickEventHandler } = AddButton(item);
     titleDiv.appendChild(buttonContainer);
 
-    return { titleDiv, checkItemInCart };
+    return { titleDiv, btnClickEventHandler };
+}
+
+function AddRemoveButton(item) {
+    const btn = document.createElement("div");
+    btn.classList.add(style.addedStateContainer);
+
+    const removeItemBtn = document.createElement("button");
+    removeItemBtn.classList.add(style.childButton);
+    removeItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
+    btn.appendChild(removeItemBtn);
+
+    const quantitySpan = document.createElement("span");
+    quantitySpan.classList.add(style.quantitySpan);
+    quantitySpan.textContent = Cart.getItemQuantity(item);
+    btn.appendChild(quantitySpan);
+
+    const addItemBtn = document.createElement("button");
+    addItemBtn.classList.add(style.childButton);
+    addItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
+    btn.appendChild(addItemBtn);
+
+    function updateQuantityDisplay() {
+        const quantity = Cart.getItemQuantity(item);
+        quantitySpan.textContent = quantity;
+    }
+
+    removeItemBtn.addEventListener("click", () => {
+        Cart.removeItem(item);
+        updateQuantityDisplay();
+    });
+
+    addItemBtn.addEventListener("click", () => {
+        Cart.addItem(item);
+        updateQuantityDisplay();
+    });
+
+    return { btn, updateQuantityDisplay };
 }
 
 function AddButton(item) {
@@ -143,63 +180,37 @@ function AddButton(item) {
     addBtn.id = item.id;
     buttonContainer.appendChild(addBtn);
 
-    const addedStateContainer = document.createElement("div");
-    addedStateContainer.classList.add(style.addedStateContainer);
+    const secondaryButton = AddRemoveButton(item);
+    buttonContainer.appendChild(secondaryButton.btn);
 
-    const removeItemBtn = document.createElement("button");
-    removeItemBtn.classList.add(style.childButton);
-    removeItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
-    addedStateContainer.appendChild(removeItemBtn);
-
-    const quantitySpan = document.createElement("span");
-    quantitySpan.classList.add(style.quantitySpan);
-    quantitySpan.textContent = Cart.getItemQuantity(item);
-    addedStateContainer.appendChild(quantitySpan);
-
-    const addItemBtn = document.createElement("button");
-    addItemBtn.classList.add(style.childButton);
-    addItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
-    addedStateContainer.appendChild(addItemBtn);
-
-    buttonContainer.appendChild(addedStateContainer);
-
-    function checkItemInCart() {
+    function toggleButtonDisplay() {
         const quantity = Cart.getItemQuantity(item);
-
-        quantitySpan.textContent = quantity;
         if (quantity > 0) {
             addBtn.style.display = "none";
-            addedStateContainer.style.display = "flex";
+            secondaryButton.btn.style.display = "flex";
         } else {
-            addedStateContainer.style.display = "none";
             addBtn.style.display = "flex";
+            secondaryButton.btn.style.display = "none";
         }
     }
 
-    addBtn.addEventListener("click", () => {
+    function btnClickEventHandler() {
         Cart.addItem(item);
-        checkItemInCart();
-    });
+        secondaryButton.updateQuantityDisplay();
+        toggleButtonDisplay();
+    }
 
-    removeItemBtn.addEventListener("click", () => {
-        Cart.removeItem(item);
-        checkItemInCart();
-    });
+    addBtn.addEventListener("click", () => btnClickEventHandler());
 
-    addItemBtn.addEventListener("click", () => {
-        Cart.addItem(item);
-        checkItemInCart();
-    });
-
-    document.addEventListener("DOMContentLoaded", () => checkItemInCart());
+    document.addEventListener("DOMContentLoaded", () => toggleButtonDisplay());
     buttonContainer.addEventListener("DOMNodeInserted", () =>
-        checkItemInCart()
+        toggleButtonDisplay()
     );
 
-    return { buttonContainer, checkItemInCart };
+    return { buttonContainer, btnClickEventHandler };
 }
 
-function MoreDetails(item, checkItemInCart) {
+function MoreDetails(item, btnClickEventHandler) {
     const moreDetails = document.createElement("div");
     moreDetails.classList.add(style.moreDetails);
 
@@ -208,7 +219,7 @@ function MoreDetails(item, checkItemInCart) {
     btn.textContent = "More details";
     moreDetails.appendChild(btn);
 
-    const dialog = Popup(item, checkItemInCart);
+    const dialog = Popup(item, btnClickEventHandler);
 
     moreDetails.appendChild(dialog);
     btn.addEventListener("click", () => {
@@ -218,7 +229,7 @@ function MoreDetails(item, checkItemInCart) {
     return moreDetails;
 }
 
-function Popup(item, checkItemInCart) {
+function Popup(item, btnClickEventHandler) {
     const dialog = document.createElement("dialog");
     dialog.classList.add(style.dialog);
 
@@ -250,8 +261,7 @@ function Popup(item, checkItemInCart) {
     dialogBody.appendChild(addBtn);
 
     addBtn.addEventListener("click", () => {
-        Cart.addItem(item);
-        checkItemInCart();
+        btnClickEventHandler();
         dialog.close();
     });
 
