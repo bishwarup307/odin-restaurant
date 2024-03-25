@@ -91,6 +91,8 @@
 }
 
 .add-btn {
+    display: flex;
+    align-items: center;
     width: auto;
 }
 
@@ -208,6 +210,47 @@
     width: 2rem;
     border: none;
     background-color: transparent;
+}
+
+.added-state-container {
+    background-color: var(--clr-primary);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.15em 0.8em;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.quantity-span {
+    color: #fff;
+    background-color: var(--clr-primary-300);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0.25em 0.25em; */
+    border-radius: 50%;
+}
+
+.child-button {
+    flex: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: none;
+    stroke: var(--clr-primary-100);
+    border: none;
+    padding: 0.25rem;
+    stroke-width: 4;
+}
+
+.child-button.separator {
+    transform: rotate(90deg);
+    background: none;
 }
 
 @media only screen and (min-width: 768px) {

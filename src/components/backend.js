@@ -33,11 +33,17 @@ const Cart = (function Backend() {
         localStorage.setItem("cart", JSON.stringify(cart));
     }
 
+    function getItemQuantity(item) {
+        const itemInCart = _itemExistsInCart(item) || {};
+        const quantity = itemInCart.quantity || 0;
+        return quantity;
+    }
+
     function getCartTotal() {
         return cart.reduce((acc, curr) => acc + curr.total, 0);
     }
 
-    return { getCart, addItem, removeItem, getCartTotal };
+    return { getCart, addItem, removeItem, getItemQuantity, getCartTotal };
 })();
 
 export default Cart;

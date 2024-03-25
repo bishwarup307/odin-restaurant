@@ -19,7 +19,9 @@ function ItemComponent(item) {
 
     itemGrid.appendChild(DishVegNonveg(item));
     itemGrid.appendChild(Photo(item));
-    itemGrid.appendChild(Title(item));
+
+    const { titleDiv, checkItemInCart } = Title(item);
+    itemGrid.appendChild(titleDiv);
 
     const price = document.createElement("p");
     price.classList.add(style.price);
@@ -27,7 +29,7 @@ function ItemComponent(item) {
     itemGrid.appendChild(price);
 
     itemGrid.appendChild(Rating(item));
-    itemGrid.appendChild(MoreDetails(item));
+    itemGrid.appendChild(MoreDetails(item, checkItemInCart));
     return itemGrid;
 }
 
@@ -123,23 +125,78 @@ function Title(item) {
     title.textContent = item.name;
     titleDiv.appendChild(title);
 
+    const { buttonContainer, checkItemInCart } = AddButton(item);
+    titleDiv.appendChild(buttonContainer);
+
+    return { titleDiv, checkItemInCart };
+}
+
+function AddButton(item) {
+    const buttonContainer = document.createElement("div");
+
     const addBtn = document.createElement("button");
     const classNames = commonStyles.btnPrimary.split(" ");
     classNames.forEach((className) => addBtn.classList.add(className));
     addBtn.classList.add(commonStyles.btnSmall);
     addBtn.classList.add(style.addBtn);
-    addBtn.id = item.id;
     addBtn.textContent = "ADD";
-    titleDiv.appendChild(addBtn);
+    addBtn.id = item.id;
+    buttonContainer.appendChild(addBtn);
+
+    const addedStateContainer = document.createElement("div");
+    addedStateContainer.classList.add(style.addedStateContainer);
+
+    const removeItemBtn = document.createElement("button");
+    removeItemBtn.classList.add(style.childButton);
+    removeItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
+    addedStateContainer.appendChild(removeItemBtn);
+
+    const quantitySpan = document.createElement("span");
+    quantitySpan.classList.add(style.quantitySpan);
+    quantitySpan.textContent = Cart.getItemQuantity(item);
+    addedStateContainer.appendChild(quantitySpan);
+
+    const addItemBtn = document.createElement("button");
+    addItemBtn.classList.add(style.childButton);
+    addItemBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
+    addedStateContainer.appendChild(addItemBtn);
+
+    buttonContainer.appendChild(addedStateContainer);
+
+    function checkItemInCart() {
+        const quantity = Cart.getItemQuantity(item);
+
+        quantitySpan.textContent = quantity;
+        if (quantity > 0) {
+            addBtn.style.display = "none";
+            addedStateContainer.style.display = "flex";
+        } else {
+            addedStateContainer.style.display = "none";
+            addBtn.style.display = "flex";
+        }
+    }
 
     addBtn.addEventListener("click", () => {
-        Cart.addToCart(item);
+        Cart.addItem(item);
+        checkItemInCart();
     });
 
-    return titleDiv;
+    removeItemBtn.addEventListener("click", () => {
+        Cart.removeItem(item);
+        checkItemInCart();
+    });
+
+    addItemBtn.addEventListener("click", () => {
+        Cart.addItem(item);
+        checkItemInCart();
+    });
+
+    document.addEventListener("DOMContentLoaded", () => checkItemInCart());
+
+    return { buttonContainer, checkItemInCart };
 }
 
-function MoreDetails(item) {
+function MoreDetails(item, checkItemInCart) {
     const moreDetails = document.createElement("div");
     moreDetails.classList.add(style.moreDetails);
 
@@ -148,18 +205,17 @@ function MoreDetails(item) {
     btn.textContent = "More details";
     moreDetails.appendChild(btn);
 
-    const dialog = Popup(item);
+    const dialog = Popup(item, checkItemInCart);
 
     moreDetails.appendChild(dialog);
     btn.addEventListener("click", () => {
-        // dialog.style.display = "flex";
         dialog.showModal();
     });
 
     return moreDetails;
 }
 
-function Popup(item) {
+function Popup(item, checkItemInCart) {
     const dialog = document.createElement("dialog");
     dialog.classList.add(style.dialog);
 
@@ -191,7 +247,9 @@ function Popup(item) {
     dialogBody.appendChild(addBtn);
 
     addBtn.addEventListener("click", () => {
-        Cart.addToCart(item);
+        Cart.addItem(item);
+        checkItemInCart();
+        dialog.close();
     });
 
     dialogContainer.appendChild(dialogBody);
