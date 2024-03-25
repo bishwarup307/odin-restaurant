@@ -38,11 +38,11 @@ export default function Tab() {
         offsetMenuBorder(activeItem, border);
     }
 
-    const buttons = [
-        Button(menuSvg),
-        Button(cartSvg, "cart"),
-        Button(profileSvg),
-    ];
+    const switchMenu = Button(menuSvg, "switch-menu");
+    const switchCart = Button(cartSvg, "switch-cart", "cart");
+    const switchProfile = Button(profileSvg, "switch-profile");
+
+    const buttons = [switchMenu, switchCart, switchProfile];
 
     buttons.forEach((button) => {
         tab.appendChild(button);
@@ -63,14 +63,14 @@ export default function Tab() {
         offsetMenuBorder(activeItem, border);
     });
 
-    return tab;
+    return { tab, switchMenu, switchCart, switchProfile };
 }
 
-function Button(iconSvg, ...classNames) {
+function Button(iconSvg, id, ...classNames) {
     const btn = document.createElement("button");
-    btn.classList.add(styles.tabItem);
-    // if (active) btn.classList.add(styles.active);
 
+    btn.id = id;
+    btn.classList.add(styles.tabItem);
     classNames.forEach((className) => {
         btn.classList.add(styles[className]);
     });

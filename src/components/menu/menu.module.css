@@ -216,7 +216,6 @@
     background-color: var(--clr-primary);
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     gap: 0.25rem;
     font-size: 1rem;
     font-weight: 500;

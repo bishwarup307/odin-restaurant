@@ -192,6 +192,9 @@ function AddButton(item) {
     });
 
     document.addEventListener("DOMContentLoaded", () => checkItemInCart());
+    buttonContainer.addEventListener("DOMNodeInserted", () =>
+        checkItemInCart()
+    );
 
     return { buttonContainer, checkItemInCart };
 }

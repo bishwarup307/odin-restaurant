@@ -2,6 +2,9 @@ import style from "./common.module.css";
 import logoPng from "./assets/logo-color.png";
 import Menu from "./components/menu/menu.js";
 import Tab from "./components/tab/tab.js";
+import CartTab from "./components/cart/cart.js";
+
+let active = "switch-menu";
 
 function Hero() {
     const hero = document.createElement("div");
@@ -26,7 +29,6 @@ function Hero() {
     orderNowBtn.textContent = "Order Now";
     const classNames = style.btnPrimary.split(" ");
     classNames.forEach((className) => orderNowBtn.classList.add(className));
-    // orderNowBtn.classList.add(style["btn-primary"]);
     orderNowBtn.classList.add(style["btn-xl"]);
     heroText.appendChild(orderNowBtn);
 
@@ -36,9 +38,28 @@ function Hero() {
 }
 
 const body = document.querySelector("#root");
-
 body.classList.add(style.root);
-
 body.appendChild(Hero());
-body.appendChild(Tab());
+
+const { tab, switchMenu, switchCart, switchProfile } = Tab();
+body.appendChild(tab);
+
+tab.addEventListener("click", (e) => {
+    const btn = e.target.closest("button").id;
+    console.log(btn);
+    if (btn === active) return;
+
+    body.removeChild(body.lastChild);
+
+    switch (btn) {
+        case "switch-menu":
+            active = "switch-menu";
+            body.appendChild(Menu());
+            break;
+        case "switch-cart":
+            active = "switch-cart";
+            body.appendChild(CartTab);
+            break;
+    }
+});
 body.appendChild(Menu());
