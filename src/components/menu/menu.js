@@ -131,7 +131,7 @@ function Title(item) {
     return { titleDiv, btnClickEventHandler };
 }
 
-function AddRemoveButton(item) {
+export function AddRemoveButton(item) {
     const btn = document.createElement("div");
     btn.classList.add(style.addedStateContainer);
 

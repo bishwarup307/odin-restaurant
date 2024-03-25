@@ -2,7 +2,7 @@ import style from "./common.module.css";
 import logoPng from "./assets/logo-color.png";
 import Menu from "./components/menu/menu.js";
 import Tab from "./components/tab/tab.js";
-import CartTab from "./components/cart/cart.js";
+import CartContent from "./components/cart/cart.js";
 
 let active = "switch-menu";
 
@@ -58,7 +58,7 @@ tab.addEventListener("click", (e) => {
             break;
         case "switch-cart":
             active = "switch-cart";
-            body.appendChild(CartTab);
+            body.appendChild(CartContent());
             break;
     }
 });
