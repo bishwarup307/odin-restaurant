@@ -54,7 +54,18 @@ export default function CartContent() {
 
     updateCartTotal();
 
-    return cartContent;
+    function updateCartDisplay() {
+        const itemsInCart = Cart.getNumberOfItems();
+        if (itemsInCart === 0) cartContent.style.display = "none";
+        else cartContent.style.display = "flex";
+    }
+
+    cartContent.addEventListener("click", (e) => {
+        if (e.target.closest("div").classList.contains(styles.secondaryButton))
+            updateCartDisplay();
+    });
+
+    return { cartContent, updateCartDisplay };
 }
 
 function cartItemComponent(item, updateTotal) {

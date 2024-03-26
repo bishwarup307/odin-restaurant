@@ -2,8 +2,9 @@ import style from "./common.module.css";
 import logoPng from "./assets/logo-color.png";
 import Menu from "./components/menu/menu.js";
 import Tab from "./components/tab/tab.js";
-import CartContent from "./components/cart/cart.js";
+import CartGrid from "./components/cart/cart.js";
 import Cart from "./components/backend.js";
+import Profile from "./components/profile/profile.js";
 
 let active = "switch-menu";
 
@@ -52,20 +53,30 @@ export { updateCartNotificationIcon };
 body.appendChild(tab);
 
 tab.addEventListener("click", (e) => {
-    const btn = e.target.closest("button").id;
-    console.log(btn);
-    if (btn === active) return;
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    const btnId = btn.id;
+
+    if (btnId === active) return;
 
     body.removeChild(body.lastChild);
 
-    switch (btn) {
+    switch (btnId) {
         case "switch-menu":
             active = "switch-menu";
             body.appendChild(Menu());
             break;
         case "switch-cart":
             active = "switch-cart";
-            body.appendChild(CartContent());
+            const { cartContent, updateCartDisplay } = CartGrid();
+            body.appendChild(cartContent);
+            updateCartDisplay();
+            break;
+
+        case "switch-profile":
+            active = "switch-profile";
+            body.appendChild(Profile());
             break;
     }
 });
