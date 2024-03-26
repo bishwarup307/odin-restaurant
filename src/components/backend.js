@@ -26,8 +26,10 @@ const Cart = (function Backend() {
         let itemInCart = _itemExistsInCart(item);
         if (!itemInCart) return;
 
-        if (itemInCart.quantity > 1) itemInCart.quantity -= 1;
-        else {
+        if (itemInCart.quantity > 1) {
+            itemInCart.quantity -= 1;
+            itemInCart.total -= item.price;
+        } else {
             cart = cart.filter((x) => x.id !== item.id);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -39,11 +41,29 @@ const Cart = (function Backend() {
         return quantity;
     }
 
+    function getItemTotal(item) {
+        const itemInCart = _itemExistsInCart(item) || {};
+        const total = itemInCart.total || 0;
+        return total;
+    }
+
+    function getNumberOfItems() {
+        return cart.reduce((acc, curr) => acc + curr.quantity, 0);
+    }
+
     function getCartTotal() {
         return cart.reduce((acc, curr) => acc + curr.total, 0);
     }
 
-    return { getCart, addItem, removeItem, getItemQuantity, getCartTotal };
+    return {
+        getCart,
+        addItem,
+        removeItem,
+        getItemQuantity,
+        getItemTotal,
+        getNumberOfItems,
+        getCartTotal,
+    };
 })();
 
 export default Cart;
