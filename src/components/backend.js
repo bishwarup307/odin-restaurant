@@ -1,3 +1,5 @@
+import { updateCartNotificationIcon } from "../index";
+
 const Cart = (function Backend() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -20,6 +22,7 @@ const Cart = (function Backend() {
             cart.push(item);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartNotificationIcon(this.getNumberOfItems());
     }
 
     function removeItem(item) {
@@ -33,6 +36,7 @@ const Cart = (function Backend() {
             cart = cart.filter((x) => x.id !== item.id);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartNotificationIcon(this.getNumberOfItems());
     }
 
     function getItemQuantity(item) {

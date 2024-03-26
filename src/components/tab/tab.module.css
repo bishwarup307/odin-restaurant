@@ -1,3 +1,7 @@
+/* :root {
+    --total: "10";
+} */
+
 .tab {
     margin: 3rem 0;
     display: flex;
@@ -87,8 +91,8 @@
     transition: transform 500ms;
 }
 
-.cart::after {
-    content: "7";
+.cart.not-empty::after {
+    content: attr(data-after);
     position: absolute;
     top: -5px;
     right: 30%;
@@ -105,7 +109,7 @@
     transition: all 500ms;
 }
 
-.active.cart::after {
+.active.not-empty.cart::after {
     background: var(--clr-light);
     border: 1px solid var(--clr-primary);
     color: var(--clr-primary);

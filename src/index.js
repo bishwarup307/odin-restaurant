@@ -3,6 +3,7 @@ import logoPng from "./assets/logo-color.png";
 import Menu from "./components/menu/menu.js";
 import Tab from "./components/tab/tab.js";
 import CartContent from "./components/cart/cart.js";
+import Cart from "./components/backend.js";
 
 let active = "switch-menu";
 
@@ -41,7 +42,13 @@ const body = document.querySelector("#root");
 body.classList.add(style.root);
 body.appendChild(Hero());
 
-const { tab, switchMenu, switchCart, switchProfile } = Tab();
+const { tab, updateCartNotificationIcon } = Tab();
+
+document.addEventListener("DOMContentLoaded", () =>
+    updateCartNotificationIcon(Cart.getNumberOfItems())
+);
+export { updateCartNotificationIcon };
+
 body.appendChild(tab);
 
 tab.addEventListener("click", (e) => {
